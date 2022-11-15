@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Collection from './components/Collection';
+import { Routes, Route , Link} from 'react-router-dom';
+import Customize from './components/Customize';
+import Sale from './components/Sale';
+import { BsCart } from 'react-icons/bs'
+import Profile from './components/Profile';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='navbar'>
+        <div className="logo_menu">
+          <h1>Fable</h1>
+        </div>
+        <ul className='nav_list'>
+          <Link to="/" className='link'>Collection</Link>
+          <Link to="/customize" className='link'>Customize</Link>
+          <Link to="/sale" className='link'>Sale</Link>
+        </ul>
+        <Link to="/profile" className='link'><span><BsCart /></span>ITEM</Link>
+      </div>
+     
+      <Routes>
+        <Route path='/' element={<Collection />} />
+        <Route path='/customize' element={<Customize />} />
+        <Route path='/sale' element={<Sale />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
     </div>
   );
 }
